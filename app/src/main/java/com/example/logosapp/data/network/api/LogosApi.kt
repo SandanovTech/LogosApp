@@ -6,5 +6,5 @@ import retrofit2.http.Query
 
 interface LogosApi {
     @GET("{company}")
-    suspend fun getLogos(@Query("company") company: String): LogoDTO
+    suspend fun getLogos(@Query("company") company: String): List<LogoDTO>
 }

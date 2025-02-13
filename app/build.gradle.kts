@@ -59,6 +59,13 @@ dependencies {
     implementation(libs.coil.compose)
     implementation(libs.coil.network.okhttp)
 
+    //Compose viewModel
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+
+    //Koin
+    implementation (libs.koin.android)
+    implementation (libs.koin.androidx.compose)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
