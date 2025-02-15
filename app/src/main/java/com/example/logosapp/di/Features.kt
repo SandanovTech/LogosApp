@@ -4,7 +4,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-const val BASE_URL = "https://api.api-ninjas.com/v1/logo/"
+const val BASE_URL = "https://api.api-ninjas.com/v1/"
 
 fun provideRetrofit(client: OkHttpClient): Retrofit {
     return Retrofit.Builder()

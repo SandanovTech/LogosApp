@@ -1,7 +1,7 @@
 package com.example.logosapp.domain.repository
 
-import com.example.logosapp.domain.model.Logo
+import com.example.logosapp.domain.model.Word
 
 interface Repository {
-    suspend fun getLogos(company : String) : List<Logo>
+    suspend fun getWords(word :String, forceRefresh : Boolean): List<Word>
 }
