@@ -11,5 +11,5 @@ interface WordDao {
     suspend fun insertWords(logo: WordEntity)
 
     @Query("Select * from words")
-    suspend fun getAllWords(): List<WordEntity>
+    suspend fun getAllWords(word: String): List<WordEntity>
 }
