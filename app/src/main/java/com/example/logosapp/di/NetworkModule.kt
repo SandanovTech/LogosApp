@@ -1,5 +1,6 @@
 package com.example.logosapp.di
 
+import com.example.logosapp.data.helper.NetworkHelper
 import com.example.logosapp.data.local.LocalDataSource
 import com.example.logosapp.data.local.LocalDataSourceImpl
 import com.example.logosapp.data.network.NetworkDataSource
@@ -17,9 +18,11 @@ val networkModule = module {
 
     single { get<Retrofit>().create(WordsApi::class.java) }
 
-    single<Repository> { RepositoryImpl(get(), get()) }
+    single<Repository> { RepositoryImpl(get(), get(), get()) }
 
     single<NetworkDataSource> { NetworkDataSourceImpl(get(), get()) }
 
     single<LocalDataSource> { LocalDataSourceImpl(get()) }
+
+    single { NetworkHelper(get()) }
 }

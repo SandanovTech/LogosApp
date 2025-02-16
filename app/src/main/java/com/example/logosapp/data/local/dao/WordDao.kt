@@ -10,6 +10,6 @@ interface WordDao {
     @Insert
     suspend fun insertWords(logo: WordEntity)
 
-    @Query("Select * from words")
+    @Query("Select * from words Where name like :word")
     suspend fun getAllWords(word: String): List<WordEntity>
 }

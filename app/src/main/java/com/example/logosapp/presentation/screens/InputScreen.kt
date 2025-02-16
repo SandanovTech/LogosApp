@@ -34,7 +34,7 @@ fun InputScreen() {
             inputText.value = it
         })
         Button(onClick = {
-            viewModel.loadWordDescription(inputText.value, forceRefresh = true)
+            viewModel.loadWordDescription(inputText.value)
         }) {
             Text("Get info")
         }

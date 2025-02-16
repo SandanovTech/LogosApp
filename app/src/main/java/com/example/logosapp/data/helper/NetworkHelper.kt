@@ -9,11 +9,12 @@ import android.net.NetworkRequest
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-object ConnectionHelper {
+class NetworkHelper(context: Context) {
     private val _isWifiConnected = MutableStateFlow(false)
     val isWifiConnected = _isWifiConnected.asStateFlow()
 
-    private var connectivityManager: ConnectivityManager? = null
+    private var connectivityManager =
+        context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
     private val networkRequest = NetworkRequest.Builder()
         .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
@@ -32,13 +33,13 @@ object ConnectionHelper {
             _isWifiConnected.value = false
         }
     }
-    fun startMonitoring(context: Context) {
-        connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        connectivityManager?.requestNetwork(networkRequest, networkCallback)
+
+    fun startMonitoring() {
+        connectivityManager.requestNetwork(networkRequest, networkCallback)
     }
 
     fun stopMonitoring() {
-        connectivityManager?.unregisterNetworkCallback(networkCallback)
+        connectivityManager.unregisterNetworkCallback(networkCallback)
     }
 
     fun isWifiConnected(context: Context) {
